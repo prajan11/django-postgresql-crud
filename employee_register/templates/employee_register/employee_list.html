@@ -8,7 +8,11 @@
                 <th>Mobile</th>
                 <th>Code</th>
                 <th>Position</th>
-                <th>Action</th>
+                <th>
+                    <a href="{% url 'employee_insert' %}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i>Add New
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +25,15 @@
                     <td>
                         <a href="{% url 'employee_update' employee.id %}" class="btn text-secondary px-0">
                             <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="{% url 'employee_delete' employee.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">
+                                 <i class="fas fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                    
+                        </form>
+                            
                         </a>
                     </td>
                 </tr>

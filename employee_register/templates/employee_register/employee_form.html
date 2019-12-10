@@ -15,9 +15,20 @@
                 {{form.position|as_crispy_field}}
             </div>
         </div>
-        <button class="submit btn btn-success">
-            <i class="fas fa-file-export"></i>Submit
-        </button>
+        <div class="row">
+            <div class="col-md-8">
+                <button class="submit btn btn-success btn-block btn-lg">
+                    <i class="fas fa-file-export"></i>Submit
+                </button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'employee_list' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i>Back To Employee List
+                </a>
+
+            </div>
+        </div>
+        
     </form>
     
 {% endblock content %}
