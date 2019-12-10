@@ -1,5 +1,23 @@
 {% extends 'employee_register/base.html' %} 
+{% load crispy_forms_tags %}
 
 {% block content %}
-
+    <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+        {% comment %} {{form|crispy}} {% endcomment %}
+        {{ form.fullname|as_crispy_field }}
+        {{ form.mobile|as_crispy_field }}
+        <div class="row">
+            <div class="col-md-4">
+                {{form.emp_code|as_crispy_field}}
+            </div>
+            <div class="col-md-8">
+                {{form.position|as_crispy_field}}
+            </div>
+        </div>
+        <button class="submit btn btn-success">
+            <i class="fas fa-file-export"></i>Submit
+        </button>
+    </form>
+    
 {% endblock content %}
