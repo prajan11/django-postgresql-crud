@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .forms import EmployeeForm
 from .models import Employee
+import os
+from django.conf import settings
 
 # Create your views here.
 def employee_list(request):
@@ -22,6 +24,7 @@ def employee_form(request, id=0):
             form = EmployeeForm(request.POST or None, request.FILES or None)
         else:
             employee = Employee.objects.get(id=id)
+            employee.image.delete()
             form = EmployeeForm(request.POST or None, request.FILES or None, instance = employee)
 
         if form.is_valid():
@@ -33,4 +36,5 @@ def employee_form(request, id=0):
 def employee_delete(request,id):
     employee = Employee.objects.get(id=id)
     employee.delete()
+
     return redirect('/employee/list')

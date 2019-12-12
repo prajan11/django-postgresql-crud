@@ -17,3 +17,8 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.fullname
+
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super().delete(*args, **kwargs)  # Call the "real" save() method.
+       
