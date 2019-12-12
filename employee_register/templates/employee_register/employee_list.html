@@ -1,6 +1,8 @@
 {% extends 'employee_register/base.html' %} 
 
 {% block content %}
+
+<h1>{{ name }}</h1>
     <table class="table table-borderless">
         <thead class="border-bottom font-weight-bold">
             <tr>
@@ -8,6 +10,7 @@
                 <th>Mobile</th>
                 <th>Code</th>
                 <th>Position</th>
+                <th>Image</th>
                 <th>
                     <a href="{% url 'employee_insert' %}" class="btn btn-outline-success">
                         <i class="fas fa-plus"></i>Add New
@@ -22,6 +25,14 @@
                     <td> {{ employee.mobile }} </td>
                     <td>{{ employee.emp_code }} </td>
                     <td>{{ employee.position }}</td>
+                    {% comment %} <td>{{ employee.image }}</td> {% endcomment %}
+                    <td>
+                        {% if employee.image %}
+                            <img src="{{employee.image.url}}" alt="Employee Image" width="80" height="80">
+                        {% else %}
+                            <p>No</p>
+                        {% endif %}
+                    </td> 
                     <td>
                         <a href="{% url 'employee_update' employee.id %}" class="btn text-secondary px-0">
                             <i class="far fa-edit fa-lg"></i>

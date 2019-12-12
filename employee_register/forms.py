@@ -5,12 +5,13 @@ class EmployeeForm(forms.ModelForm):
 
     class Meta:
         model = Employee     
-        fields = ('fullname', 'mobile', 'emp_code', 'position')
+        fields = ('fullname', 'mobile', 'emp_code', 'position','image')
         labels = {
             'fullname': 'Full Name',
             'mobile': 'Mobile Number',
             'emp_code': "Employee Code",
             'position': "Position",
+            'image': "Employee Image"
         }
 
 
@@ -18,3 +19,4 @@ class EmployeeForm(forms.ModelForm):
         super(EmployeeForm, self).__init__(*args, **kwargs)
         self.fields['position'].empty_label = "Select Position"
         self.fields['emp_code'].required = False
+        # self.fields['image'].required = False

@@ -8,6 +8,7 @@ def employee_list(request):
     return render(request,"employee_register/employee_list.html",context)
 
 def employee_form(request, id=0):
+    print(request)
     if request.method == "GET":
         if id == 0:
             form = EmployeeForm()
@@ -18,10 +19,10 @@ def employee_form(request, id=0):
         return render(request,"employee_register/employee_form.html",{'form':form})
     else:
         if id == 0:
-            form = EmployeeForm(request.POST)
+            form = EmployeeForm(request.POST or None, request.FILES or None)
         else:
             employee = Employee.objects.get(id=id)
-            form = EmployeeForm(request.POST, instance = employee)
+            form = EmployeeForm(request.POST or None, request.FILES or None, instance = employee)
 
         if form.is_valid():
             form.save()
