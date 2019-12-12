@@ -2,7 +2,19 @@
 
 {% block content %}
 
-<h1>{{ name }}</h1>
+   {% if messages %}
+
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}{{ 'danger' }}{% else %}{{ message.tags }}{% endif %}" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{message}}
+            </div>
+        {% endfor %}
+    
+    {% endif %}
+
     <table class="table table-borderless">
         <thead class="border-bottom font-weight-bold">
             <tr>
