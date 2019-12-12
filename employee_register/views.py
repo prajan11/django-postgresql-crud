@@ -6,6 +6,7 @@ from django.conf import settings
 
 # Create your views here.
 def employee_list(request):
+    print (settings.BASE_DIR)
     context = {'employee_list':Employee.objects.all()}
     return render(request,"employee_register/employee_list.html",context)
 

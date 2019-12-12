@@ -17,7 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #For static files (CSS, JS, Static Images)
 STATIC_URL= '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "employee_project/static"),
+]
 
 #For dynamic files (User uploaded files)
 MEDIA_URL= '/media/'
