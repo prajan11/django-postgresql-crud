@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from employee_register import views
 
 urlpatterns = [
+    path('', include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     path('register/', views.register, name="register"),
     path('employee/', include('employee_register.urls'))

@@ -12,9 +12,10 @@ def register(request):
     registerForm = RegisterForm(request.POST or None)
     if request.method == "POST":
         if registerForm.is_valid():
+            registerForm.is_staff = True
             registerForm.save()
-    
-    return render(request, "employee_register/auth/register.html", {"form": registerForm})
+
+    return render(request, "registration/register.html", {"form": registerForm})
 
 def employee_list(request):
     print (settings.BASE_DIR)
