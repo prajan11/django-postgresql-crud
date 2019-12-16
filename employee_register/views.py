@@ -1,11 +1,21 @@
 from django.shortcuts import render,redirect
-from .forms import EmployeeForm
+from .forms import EmployeeForm, RegisterForm
 from .models import Employee
 import os
 from django.conf import settings
 from django.contrib import messages
+#from django.contrib.auth import login, authenticate
+#from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
+def register(request):
+    registerForm = RegisterForm(request.POST or None)
+    if request.method == "POST":
+        if registerForm.is_valid():
+            registerForm.save()
+    
+    return render(request, "employee_register/auth/register.html", {"form": registerForm})
+
 def employee_list(request):
     print (settings.BASE_DIR)
     context = {'employee_list':Employee.objects.all()}
